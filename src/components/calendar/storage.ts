@@ -1,17 +1,20 @@
 import { formatDayKey, parseStoredDate, startOfMonth } from "@/utils/date-utils";
-import type { NotesState } from "@/utils/types";
+import type { EventsState, NotesState } from "@/utils/types";
 
 export const STORAGE_KEYS = {
   start: "interactive-calendar:selected-start",
   end: "interactive-calendar:selected-end",
   month: "interactive-calendar:current-month",
   notes: "interactive-calendar:notes",
+  events: "interactive-calendar:events",
 } as const;
 
 export const DEFAULT_NOTES: NotesState = {
   monthNotes: {},
   rangeNotes: {},
 };
+
+export const DEFAULT_EVENTS: EventsState = {};
 
 export function readNotesState() {
   if (typeof window === "undefined") {
@@ -38,6 +41,38 @@ export function writeNotesState(notes: NotesState) {
   window.localStorage.setItem(STORAGE_KEYS.notes, JSON.stringify(notes));
 }
 
+export function readEventsState() {
+  if (typeof window === "undefined") {
+    return DEFAULT_EVENTS;
+  }
+
+  const storedEvents = window.localStorage.getItem(STORAGE_KEYS.events);
+  if (!storedEvents) {
+    return DEFAULT_EVENTS;
+  }
+
+  try {
+    const parsed = JSON.parse(storedEvents) as EventsState;
+    return Object.fromEntries(
+      Object.entries(parsed).map(([dateKey, events]) => [
+        dateKey,
+        Array.isArray(events)
+          ? events.filter(
+              (event): event is { id: string; title: string } =>
+                Boolean(event) && typeof event.id === "string" && typeof event.title === "string",
+            )
+          : [],
+      ]),
+    );
+  } catch {
+    return DEFAULT_EVENTS;
+  }
+}
+
+export function writeEventsState(events: EventsState) {
+  window.localStorage.setItem(STORAGE_KEYS.events, JSON.stringify(events));
+}
+
 export function readCalendarStorageState() {
   const fallbackMonth = startOfMonth(new Date());
 
@@ -47,6 +82,7 @@ export function readCalendarStorageState() {
       selectedStartDate: null as Date | null,
       selectedEndDate: null as Date | null,
       notes: DEFAULT_NOTES,
+      events: DEFAULT_EVENTS,
       isHydrated: false,
     };
   }
@@ -60,6 +96,7 @@ export function readCalendarStorageState() {
     selectedStartDate: storedStart,
     selectedEndDate: storedEnd,
     notes: readNotesState(),
+    events: readEventsState(),
     isHydrated: true,
   };
 }
@@ -70,6 +107,7 @@ export function readCalendarServerState() {
     selectedStartDate: null as Date | null,
     selectedEndDate: null as Date | null,
     notes: DEFAULT_NOTES,
+    events: DEFAULT_EVENTS,
     isHydrated: false,
   };
 }

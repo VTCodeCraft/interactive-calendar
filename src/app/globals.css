@@ -1,8 +1,119 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f5ef;
-  --foreground: #22312b;
+  --background: #f5f4ff;
+  --foreground: #1e1b4b;
+
+  --color-page-bg: #f5f4ff;
+  --color-page-surface: #faf9ff;
+  --color-page-sidebar: #f7f6ff;
+  --color-page-header: rgb(250 249 255 / 0.92);
+
+  --color-text-base: #2d2a6e;
+  --color-text-strong: #1e1b4b;
+  --color-text-heading: #1e1b4b;
+  --color-text-brand: #4f46e5;
+  --color-text-brand-strong: #4338ca;
+  --color-text-accent: #6d58e8;
+  --color-text-muted: #6360a0;
+  --color-text-soft: #6b6a9e;
+  --color-text-subtle: #7472a8;
+  --color-text-faint: #8280b2;
+  --color-text-dim: #9896c8;
+  --color-text-label: #a8a6d2;
+  --color-text-weaker: #b8b6dc;
+  --color-text-placeholder: #c4c2e4;
+  --color-text-disabled: #d0ceee;
+  --color-text-outside: #dddcf4;
+  --color-text-outside-soft: #e8e7f8;
+  --color-text-inverse: #ffffff;
+
+  --color-border-base: #d4d0f8;
+  --color-border-soft: #dad6fa;
+  --color-border-card: #e0dcfa;
+  --color-border-panel: #e4e0fb;
+  --color-border-calendar: #e8e4fc;
+  --color-border-cell: #eceafd;
+  --color-border-input: #dbd8f8;
+  --color-border-input-alt: #ddd9f9;
+  --color-border-input-focus: #a5b4fc;
+  --color-border-input-disabled: #eeecfd;
+  --color-border-hover: #cdc9f6;
+
+  --color-surface-subtle: #f0eeff;
+  --color-surface-soft: #f2f0ff;
+  --color-surface-muted: #f4f2ff;
+  --color-surface-panel: #faf9ff;
+  --color-surface-card: #ffffff;
+  --color-surface-card-soft: rgb(255 255 255 / 0.75);
+  --color-surface-card-tint: rgb(255 255 255 / 0.7);
+  --color-surface-card-strong: #fdfcff;
+  --color-surface-card-disabled: #f5f4ff;
+  --color-surface-outside: #f0eeff;
+
+  --color-accent: #4f46e5;
+  --color-accent-strong: #4338ca;
+  --color-accent-contrast: #3730a3;
+  --color-accent-range: #e0e7ff;
+  --color-accent-range-strong: #c7d2fe;
+  --color-accent-range-edge: #a5b4fc;
+  --color-accent-range-pill: #eeecfd;
+  --color-accent-pill-text: #4338ca;
+  --color-accent-month-pill: #e0e7ff;
+  --color-accent-month-pill-text: #3730a3;
+  --color-accent-track: #ddd9f9;
+  --color-accent-ring: rgb(99 102 241 / 0.55);
+  --color-accent-top-glow: rgb(79 70 229 / 0.12);
+
+  --color-neutral-pill: #eeecfd;
+  --color-neutral-pill-text: #6d58e8;
+  --color-neutral-status: #f4f2ff;
+  --color-neutral-status-text: #9896c8;
+  --color-neutral-chip: #e8e6fc;
+  --color-neutral-chip-text: #5b52c2;
+
+  --color-white-soft: rgb(255 255 255 / 0.95);
+  --color-white-faint: rgb(255 255 255 / 0.78);
+  --color-white-line: rgb(255 255 255 / 0.55);
+  --color-white-line-soft: rgb(255 255 255 / 0.4);
+
+  --color-hero-bg: #1e1b4b;
+  --color-hero-copy: rgb(199 210 254 / 0.72);
+  --color-hero-body: rgb(209 218 255 / 0.84);
+  --color-hero-glass-border: rgb(255 255 255 / 0.14);
+  --color-hero-glass-bg: rgb(255 255 255 / 0.06);
+  --color-hero-card-border: rgb(255 255 255 / 0.12);
+  --color-hero-card-bg: rgb(255 255 255 / 0.08);
+  --color-hero-card-fill: rgb(255 255 255 / 0.14);
+
+  --shadow-brand: 0 10px 24px rgb(79 70 229 / 0.22);
+  --shadow-card: 0 10px 22px rgb(30 27 75 / 0.06);
+  --shadow-card-sm: 0 8px 18px rgb(30 27 75 / 0.05);
+  --shadow-calendar: 0 8px 18px rgb(30 27 75 / 0.06);
+  --shadow-cell: 0 8px 22px rgb(30 27 75 / 0.05);
+  --shadow-cell-edge: 0 10px 20px rgb(79 70 229 / 0.28);
+  --shadow-button: 0 10px 24px rgb(79 70 229 / 0.28);
+  --shadow-hero-card: 0 10px 18px rgb(0 0 0 / 0.18);
+  --shadow-picker: 0 18px 40px rgb(30 27 75 / 0.14);
+  --shadow-inset-soft: inset 0 1px 0 rgb(255 255 255 / 0.9);
+  --shadow-inset-nav: inset 0 1px 0 rgb(255 255 255 / 0.82);
+  --shadow-range-inset: inset 0 0 0 1px rgb(255 255 255 / 0.6);
+
+  --gradient-page:
+    radial-gradient(circle at top left, rgb(255 255 255 / 0.95), transparent 30%),
+    linear-gradient(160deg, #f5f4ff 0%, #edeaff 50%, #f0eeff 100%);
+  --gradient-page-body:
+    radial-gradient(circle at top left, rgb(255 255 255 / 0.92), transparent 20%),
+    linear-gradient(160deg, #f5f4ff 0%, #edeaff 50%, #f0eeff 100%);
+  --gradient-page-grid:
+    linear-gradient(var(--color-white-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-white-line-soft) 1px, transparent 1px);
+  --gradient-page-vignette: radial-gradient(circle at center, transparent 58%, rgb(30 27 75 / 0.04) 100%);
+  --gradient-hero-overlay: linear-gradient(180deg, rgb(30 27 75 / 0.08) 0%, rgb(30 27 75 / 0.12) 35%, rgb(15 14 45 / 0.85) 100%);
+  --gradient-hero-radial: radial-gradient(circle at 35% 20%, rgb(129 140 248 / 0.28), transparent 32%), radial-gradient(circle at 70% 15%, rgb(192 132 252 / 0.14), transparent 22%);
+  --gradient-range-fill: linear-gradient(180deg, rgb(224 231 255 / 0.96), rgb(199 210 254 / 0.96));
+  --gradient-edge-fill: linear-gradient(180deg, var(--color-accent-top-glow), rgb(0 0 0 / 0));
+  --pattern-outside-day: repeating-linear-gradient(135deg, transparent, transparent 6px, rgb(99 102 241 / 0.04) 6px, rgb(99 102 241 / 0.04) 7px);
 }
 
 @theme inline {
@@ -13,16 +124,12 @@
 }
 
 html {
-  background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.96), transparent 28%),
-    linear-gradient(180deg, #fbfaf6 0%, #f4f1e9 100%);
+  background: var(--gradient-page);
 }
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top left, rgba(255, 255, 255, 0.95), transparent 18%),
-    linear-gradient(180deg, #fbfaf6 0%, #f4f1e9 100%);
+  background: var(--gradient-page-body);
   color: var(--foreground);
   font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
 }
@@ -31,11 +138,9 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.35) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.28) 1px, transparent 1px);
+  background-image: var(--gradient-page-grid);
   background-size: 48px 48px;
-  opacity: 0.1;
+  opacity: 0.12;
   pointer-events: none;
 }
 
@@ -43,7 +148,7 @@ body::after {
   content: "";
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at center, transparent 58%, rgba(22, 31, 27, 0.05) 100%);
+  background: var(--gradient-page-vignette);
   pointer-events: none;
 }
 

@@ -90,20 +90,35 @@ export function CalendarHeader({
           type="button"
           onClick={openPicker}
           whileTap={{ scale: 0.99 }}
-          className="rounded-[0.7rem] text-left transition hover:bg-[#f2f4ef] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5d7f62] focus-visible:ring-offset-2 focus-visible:ring-offset-[#fcfbf7]"
+          className="rounded-[0.7rem] text-left transition hover:bg-[var(--color-surface-soft)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-page-surface)]"
           aria-label="Open month and year picker"
           aria-expanded={isPickerOpen}
         >
           <AnimatePresence mode="wait" initial={false}>
             <motion.h1
               key={displayKey}
-              initial={{ opacity: 0, y: 12, filter: "blur(4px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}
-              transition={{ duration: 0.24, ease: "easeOut" }}
-              className="font-serif text-[1.55rem] font-semibold leading-[0.9] tracking-[-0.04em] text-[#26302d] sm:text-[1.9rem]"
+              initial={{ opacity: 0, y: 14, scale: 0.985, filter: "blur(6px)" }}
+              animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, y: -12, scale: 1.01, filter: "blur(6px)" }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="inline-flex max-w-full items-baseline gap-2 whitespace-nowrap font-serif text-[1.45rem] font-semibold leading-none tracking-[-0.045em] text-[var(--color-text-base)] sm:text-[1.8rem] lg:text-[2rem]"
             >
-              {monthLabel} {yearLabel}
+              <motion.span
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -8 }}
+                transition={{ delay: 0.04, duration: 0.24, ease: "easeOut" }}
+              >
+                {monthLabel}
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, x: 10 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 8 }}
+                transition={{ delay: 0.08, duration: 0.24, ease: "easeOut" }}
+              >
+                {yearLabel}
+              </motion.span>
             </motion.h1>
           </AnimatePresence>
         </motion.button>
@@ -111,7 +126,7 @@ export function CalendarHeader({
           initial={{ opacity: 0, y: 4 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: 0.24 }}
-          className="mt-1 text-[8px] font-semibold uppercase tracking-[0.22em] text-[#6d826f]"
+          className="mt-1 text-[8px] font-semibold uppercase tracking-[0.22em] text-[var(--color-text-soft)]"
         >
           Click month or year to jump faster
         </motion.p>
@@ -121,14 +136,14 @@ export function CalendarHeader({
         initial={{ x: 10, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ delay: 0.08, duration: 0.3, ease: "easeOut" }}
-        className="flex items-center self-start rounded-[1rem] border border-[#dde3da] bg-[#f3f5ef] p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]"
+        className="flex items-center self-start rounded-[1rem] border border-[var(--color-border-soft)] bg-[var(--color-surface-soft)] p-1 shadow-[var(--shadow-inset-soft)]"
       >
         <motion.button
           type="button"
           onClick={onPrevious}
           whileHover={{ y: -1 }}
           whileTap={{ scale: 0.96 }}
-          className="inline-flex h-8 w-8 items-center justify-center rounded-[0.8rem] text-[#617166] transition hover:bg-white hover:text-[#456347] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5d7f62]"
+          className="inline-flex h-8 w-8 items-center justify-center rounded-[0.8rem] text-[var(--color-text-muted)] transition hover:bg-[var(--color-surface-card)] hover:text-[var(--color-text-brand)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
           aria-label="Show previous month"
         >
           <ChevronLeftIcon />
@@ -138,7 +153,7 @@ export function CalendarHeader({
           onClick={onNext}
           whileHover={{ y: -1 }}
           whileTap={{ scale: 0.96 }}
-          className="inline-flex h-8 w-8 items-center justify-center rounded-[0.8rem] text-[#617166] transition hover:bg-white hover:text-[#456347] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5d7f62]"
+          className="inline-flex h-8 w-8 items-center justify-center rounded-[0.8rem] text-[var(--color-text-muted)] transition hover:bg-[var(--color-surface-card)] hover:text-[var(--color-text-brand)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-accent)]"
           aria-label="Show next month"
         >
           <ChevronRightIcon />
@@ -152,16 +167,16 @@ export function CalendarHeader({
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -8, scale: 0.98 }}
           transition={{ duration: 0.22, ease: "easeOut" }}
-          className="absolute left-0 top-full z-20 mt-2 w-[18rem] rounded-[1rem] border border-[#dde3da] bg-white p-3 shadow-[0_18px_40px_rgba(39,48,43,0.12)]"
+          className="absolute left-0 top-full z-20 mt-2 w-[18rem] rounded-[1rem] border border-[var(--color-border-soft)] bg-[var(--color-surface-card)] p-3 shadow-[var(--shadow-picker)]"
         >
           <div className="mb-3 flex items-center justify-between gap-3">
-            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.05, duration: 0.2 }} className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#6d826f]">
+            <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.05, duration: 0.2 }} className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--color-text-soft)]">
               Jump to month
             </motion.p>
             <select
               value={pickerYear}
               onChange={(event) => setPickerYear(Number(event.target.value))}
-              className="rounded-[0.7rem] border border-[#dbe0d8] bg-[#f8f9f5] px-2.5 py-1.5 text-sm font-medium text-[#446246] outline-none focus:border-[#b9ccb2] focus:ring-2 focus:ring-[#dbe9d6]"
+              className="rounded-[0.7rem] border border-[var(--color-border-input)] bg-[var(--color-page-surface)] px-2.5 py-1.5 text-sm font-medium text-[var(--color-text-brand)] outline-none focus:border-[var(--color-border-input-focus)] focus:ring-2 focus:ring-[var(--color-accent-track)]"
               aria-label="Select year"
             >
               {yearOptions.map((year) => (
@@ -188,8 +203,8 @@ export function CalendarHeader({
                   className={[
                     "rounded-[0.75rem] px-2 py-2 text-xs font-medium transition",
                     isActive
-                      ? "bg-[#4f6f52] text-white"
-                      : "bg-[#f3f5ef] text-[#526155] hover:bg-[#e7ece5]",
+                      ? "bg-[var(--color-accent)] text-[var(--color-text-inverse)]"
+                      : "bg-[var(--color-surface-soft)] text-[var(--color-accent)] hover:bg-[var(--color-neutral-pill)]",
                   ].join(" ")}
                 >
                   {month.slice(0, 3)}
