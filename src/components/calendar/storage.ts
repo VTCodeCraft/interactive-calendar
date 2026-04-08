@@ -64,6 +64,20 @@ export function readCalendarStorageState() {
   };
 }
 
+export function readCalendarServerState() {
+  return {
+    currentMonth: startOfMonth(new Date()),
+    selectedStartDate: null as Date | null,
+    selectedEndDate: null as Date | null,
+    notes: DEFAULT_NOTES,
+    isHydrated: false,
+  };
+}
+
+export function readCalendarClientState() {
+  return readCalendarStorageState();
+}
+
 export function persistCalendarMonth(currentMonth: Date) {
   window.localStorage.setItem(STORAGE_KEYS.month, formatDayKey(currentMonth));
 }
