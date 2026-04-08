@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Interactive Wall Calendar
 
-## Getting Started
+A frontend-only wall calendar experience built with Next.js 16, React 19, and Tailwind CSS v4. The UI is designed to feel like a modern hanging calendar while supporting date-range selection, persistent notes, and responsive layouts across desktop and mobile.
 
-First, run the development server:
+## Setup
+
+```bash
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) to view the app.
+
+## Features
+
+- Editorial wall-calendar layout with a bundled hero image and tactile card styling
+- Monday-first month grid with leading and trailing days
+- Date-range selection with start, end, and in-between highlighting
+- Third click resets the range and starts a new selection
+- Persistent notes stored in `localStorage`
+- Separate note scopes for:
+  - the visible month
+  - the currently selected completed date range
+- Responsive layout:
+  - desktop: image and calendar side-by-side
+  - mobile: stacked image, calendar, then notes
+- Bonus polish including month navigation, weekend emphasis, and subtle motion
+
+## State and Storage
+
+All data is managed client-side with React hooks and persisted in `localStorage`.
+
+- `selectedStartDate`
+- `selectedEndDate`
+- `currentMonth`
+- `notes`
+
+Notes use these storage shapes:
+
+- Month note key: `YYYY-MM`
+- Range note key: `YYYY-MM-DD__YYYY-MM-DD`
+
+## Scripts
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run lint
+npm run build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Demo Checklist
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+For the demo video, show:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Selecting a start date and end date
+- Reversed range selection and automatic correction
+- Third-click reset behavior
+- Saving and refreshing month notes
+- Saving and refreshing selected-range notes
+- Desktop and mobile responsive layouts
 
-## Learn More
+## Tech Notes
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Built with the Next.js App Router
+- Keeps the page server-rendered and limits the `'use client'` boundary to the interactive calendar modules
+- Uses no external calendar libraries and no backend/API integration
